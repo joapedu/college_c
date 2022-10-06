@@ -18,16 +18,21 @@ para cada posição da matriz
 //aqui exemplo prático
 
 #include <stdio.h>
+
 //definir tamanho de exemplo matriz
+
 #define TAM1 3
 #define TAM2 2
 
 int main(void){
+    
 //variáveis
+    
     int matriz1[TAM1][TAM1], matriz2[TAM1][TAM2], matriz3[TAM2][TAM2];
     int i, j;
 
 //leitura da matriz pela entrada
+    
     for(i=0; i<TAM1; i++){
         for(i=0; i<TAM1; i++){
             scanf("%d", &matriz1[i][j]);
