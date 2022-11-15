@@ -1,33 +1,41 @@
 #include <stdio.h>
 
-void computer_votes(int n, int votes[9], int *most_voted, int *second_most_votes, int i, int entrada, int primeiro, int segundo){
-    most_voted = &primeiro;
-    second_most_votes = &segundo;
+int main(void){
+    int n;
 
-    *most_voted = 0;
-    *second_most_votes = 0;
+    scanf("%d", &n);    // n = qntd de votos  
 
-    for(i = 0; i < n; i++){
-        scanf("%d", &entrada);
-        entrada += 1;
-        votes[entrada] += 1;
-        if(votes[entrada] > 1){
-            *second_most_votes = votes[entrada];
-            if(votes[entrada] > *most_voted){
-                *most_voted = votes[entrada];
+    int votes[10] = {0}; //inicializando td com zero
+
+    int *most_voted, *second_most_voted, i, primeiro, segundo; //variaveis e ponteiros
+
+    int aux = n + 1;
+    int entrada[aux]; //armezar o valor na entrada e colocar pra mudar no voto
+
+    most_voted = &primeiro; //endereço de memoria no primeiro
+    second_most_voted = &segundo;   //endereço de memoria no segundo
+
+    *most_voted = 0;    // (valor) zero e zero
+    *second_most_voted = 0; 
+
+    for(i = 1; i < aux; i++){   // repetição de 1 a 10
+        scanf("%d", &entrada[i]);    // conta os votos a entrada
+        votes[entrada[i]] += 1;     //muda para 1 com o voto
+        if(votes[entrada[i]] == votes[1] || votes[i] == votes[2] || votes[i] == votes[3] || votes[i] == votes[4] || votes[i] == votes[4])
+        {   //quatro teste caso tenha algum voto aplica os if
+            if(*most_voted > votes[entrada[i]]){    //se o valor maior ainda é maior
+                *second_most_voted = votes[entrada[i]];
+            }
+            else if(*most_voted <= votes[entrada[i]]){   //se o valor maior agora é menor 
+                *most_voted = votes[entrada[i]];
             }
         }
-        entrada = '\0';
     }
+
+    printf("%d %d", segundo, primeiro);
+
+    return 0;
 }
-
-int main(){
-    int n;
-    scanf("%d", &n);    // repet = qntd de votos  
-
-    int votes[10] = {0};
-
-    int *most_voted, *second_most_voted, i, entrada, primeiro, segundo;
 
 /*
     int x = 10;
@@ -37,6 +45,3 @@ int main(){
     int y = 20;
     *ponteiro = y;  //ponteiro aloca no endereço de memoria o valor de y    
 */
-
-    return 0;
-}
